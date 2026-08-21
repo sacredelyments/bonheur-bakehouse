@@ -129,8 +129,11 @@
   z-index: 50;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
 }
-.outline-button { transition: background-color .25s, color .25s, transform .25s; }
+.section-reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.section-reveal.is-visible { opacity: 1; transform: translateY(0); }
+.outline-button { transition: background-color .25s, color .25s, transform .25s, box-shadow .25s; }
 .outline-button:hover { background: hsl(var(--foreground)); color: hsl(var(--background)); transform: translateY(-2px); }
+.outline-button:focus-visible, .solid-button:focus-visible, .menu-link:focus-visible { outline: 3px solid hsl(var(--accent)); outline-offset: 4px; }
 .solid-button { transition: background-color .25s, transform .25s, box-shadow .25s; }
 .solid-button:hover { background: hsl(12 62% 48%); transform: translateY(-2px); box-shadow: 0 10px 22px rgba(216, 99, 67, .22); }
 .menu-link { position: relative; }
@@ -139,8 +142,13 @@
 .image-shine { overflow: hidden; }
 .image-shine img { transition: transform .65s cubic-bezier(.2,.7,.2,1); }
 .image-shine:hover img { transform: scale(1.045); }
+.image-shine:focus-within { box-shadow: 0 0 0 4px hsl(var(--accent)); }
+.image-shine button { transform: scale(.92); transition: opacity .25s, transform .25s, background-color .25s; }
+.image-shine:hover button, .image-shine:focus-within button { transform: scale(1); }
+.image-shine button:hover { background: hsl(var(--accent)); }
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .section-reveal { opacity: 1; transform: none; }
 }
