@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 import {
   ArrowDown,
   ArrowRight,
@@ -196,6 +196,37 @@ function App() {
   const [enquiryOpen, setEnquiryOpen] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [trayCount, setTrayCount] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 18);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll<HTMLElement>('[data-reveal]');
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach((element) => element.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px' },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
 
   const filteredBakes =
     activeFilter === 'All'
@@ -222,7 +253,7 @@ function App() {
         Delivering handmade sweetness across Bangalore
       </div>
 
-      <header className="relative z-40 mx-auto flex max-w-[1320px] items-center justify-between px-5 py-5 sm:px-8 lg:px-12">
+      <header className={`sticky top-0 z-40 mx-auto flex max-w-[1320px] items-center justify-between px-5 py-5 transition-[background-color,box-shadow,backdrop-filter] duration-300 sm:px-8 lg:px-12 ${isScrolled ? 'bg-[#f8f2e8]/90 shadow-[0_10px_30px_rgba(80,42,47,.07)] backdrop-blur-md' : 'bg-transparent'}`}>
         <Logo />
         <nav className="hidden items-center gap-8 text-[12px] font-semibold md:flex" aria-label="Primary navigation">
           <a className="menu-link" href={jumpTo('#about')} data-testid="link-about">About</a>
@@ -246,6 +277,8 @@ function App() {
             className="grid h-10 w-10 place-items-center rounded-full bg-[#d86343] text-[#fff8ee] md:hidden"
             onClick={() => setMobileMenuOpen((open) => !open)}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
             data-testid="button-mobile-menu"
           >
             {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -259,7 +292,7 @@ function App() {
           </button>
         </div>
         {mobileMenuOpen && (
-          <div className="absolute left-5 right-5 top-[76px] rounded-2xl border border-[#cfbea8] bg-[#fff9f0] p-5 shadow-[0_18px_45px_rgba(80,42,47,.13)] md:hidden">
+           <div id="mobile-navigation" className="absolute left-5 right-5 top-[76px] rounded-2xl border border-[#cfbea8] bg-[#fff9f0] p-5 shadow-[0_18px_45px_rgba(80,42,47,.13)] md:hidden">
             <div className="flex flex-col gap-4 text-sm font-semibold">
               <a href={jumpTo('#about')} onClick={closeMobileMenu} data-testid="mobile-link-about">About</a>
               <a href={jumpTo('#menu')} onClick={closeMobileMenu} data-testid="mobile-link-menu">Menu</a>
@@ -315,7 +348,7 @@ function App() {
           </div>
         </div>
 
-        <section id="about" className="scroll-mt-6 bg-[#fff9f0] px-5 py-20 sm:px-8 lg:py-28">
+        <section id="about" data-reveal className="section-reveal scroll-mt-6 bg-[#fff9f0] px-5 py-20 sm:px-8 lg:py-28">
           <div className="mx-auto grid max-w-[1130px] items-center gap-12 lg:grid-cols-[.86fr_1.14fr]">
             <div className="relative mx-auto w-full max-w-[430px]">
               <div className="absolute -inset-3 rotate-[-3deg] rounded-[2rem] bg-[#f6d68f]" />
@@ -332,7 +365,7 @@ function App() {
           </div>
         </section>
 
-        <section id="menu" className="scroll-mt-6 bg-[#f8f2e8] px-5 py-20 sm:px-8 lg:py-28">
+        <section id="menu" data-reveal className="section-reveal scroll-mt-6 bg-[#f8f2e8] px-5 py-20 sm:px-8 lg:py-28">
           <div className="mx-auto max-w-[1320px]">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
               <div><p className="eyebrow mb-4 text-[#d86343]">The complete menu</p><h2 className="display max-w-[680px] text-5xl font-semibold leading-[.95] tracking-[-.055em] sm:text-7xl">Pick your<br /><span className="font-normal">kind of happy.</span></h2></div>
@@ -350,7 +383,7 @@ function App() {
           </div>
         </section>
 
-        <section id="bakes" className="mx-auto max-w-[1320px] scroll-mt-6 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <section id="bakes" data-reveal className="section-reveal mx-auto max-w-[1320px] scroll-mt-6 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
           <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
             <div>
               <p className="eyebrow mb-4 text-[#d86343]">From the kitchen</p>
@@ -393,7 +426,7 @@ function App() {
           </div>
         </section>
 
-        <section className="relative overflow-hidden bg-[#3d2339] px-5 py-20 text-[#fff8ee] sm:px-8 lg:py-28">
+        <section data-reveal className="section-reveal relative overflow-hidden bg-[#3d2339] px-5 py-20 text-[#fff8ee] sm:px-8 lg:py-28">
           <div className="mx-auto grid max-w-[1130px] items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
             <div>
               <p className="eyebrow mb-5 text-[#f6d68f]">A note from our counter</p>
@@ -407,7 +440,7 @@ function App() {
           </div>
         </section>
 
-        <section id="celebrate" className="mx-auto max-w-[1320px] scroll-mt-6 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <section id="celebrate" data-reveal className="section-reveal mx-auto max-w-[1320px] scroll-mt-6 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
           <div className="grid overflow-hidden rounded-[2rem] bg-[#b9c6a1] lg:grid-cols-[.72fr_1.28fr]">
             <div className="flex flex-col justify-between p-8 sm:p-12 lg:p-16">
               <div>
@@ -425,7 +458,7 @@ function App() {
           </div>
         </section>
 
-        <section id="visit" className="scroll-mt-6 bg-[#f6d68f] px-5 py-20 sm:px-8 lg:py-24">
+        <section id="visit" data-reveal className="section-reveal scroll-mt-6 bg-[#f6d68f] px-5 py-20 sm:px-8 lg:py-24">
           <div className="mx-auto grid max-w-[1130px] gap-12 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
             <div>
               <p className="eyebrow mb-5 text-[#d86343]">The little shop</p>
@@ -438,7 +471,7 @@ function App() {
           </div>
         </section>
 
-        <section id="contact" className="mx-auto max-w-[1320px] scroll-mt-6 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+        <section id="contact" data-reveal className="section-reveal mx-auto max-w-[1320px] scroll-mt-6 px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-[.72fr_1.28fr]">
             <div>
               <p className="eyebrow mb-5 text-[#d86343]">Let’s make a plan</p>
