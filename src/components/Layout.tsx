@@ -228,23 +228,33 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="grain min-h-[100dvh] overflow-x-hidden bg-[#f8f2e8] text-[#3d2339]">
       <SmoothScroll />
 
-      {/* Announcement bar with distinct colored badges */}
-      <div className="bg-[#3d2339] px-3 py-2 text-center text-[10px] font-semibold flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#b9c6a1]/25 px-2.5 py-0.5 text-[#e5f0d3] border border-[#b9c6a1]/40">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#b9c6a1] animate-pulse" />
-          Small Batch Fresh
-        </span>
-        <span className="inline-flex items-center gap-1 rounded-full bg-[#f6d68f]/20 px-2.5 py-0.5 text-[#f6d68f] border border-[#f6d68f]/40">
-          📍 Bangalore Delivery
-        </span>
-        <a
-          href="https://wa.me/919113892539"
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-1 rounded-full bg-[#d86343] px-2.5 py-0.5 text-[#fff8ee] hover:bg-[#c44d68] transition-colors font-bold shadow-xs"
-        >
-          <Phone size={10} /> {BONHEUR_DISPLAY_PHONE}
-        </a>
+      {/* Continuous Moving Announcement Marquee Bar */}
+      <div className="overflow-hidden bg-[#3d2339] py-2 border-b border-[#3d2339]/50 select-none">
+        <div className="flex min-w-max animate-[marquee-ltr_26s_linear_infinite] items-center gap-6">
+          {[1, 2, 3, 4].map((idx) => (
+            <div key={idx} className="flex shrink-0 items-center gap-5 text-[10.5px] font-semibold">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#b9c6a1]/25 px-3 py-0.5 text-[#e5f0d3] border border-[#b9c6a1]/40">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#b9c6a1] animate-pulse" />
+                Small Batch Fresh
+              </span>
+              <span className="inline-flex items-center gap-1 rounded-full bg-[#f6d68f]/20 px-3 py-0.5 text-[#f6d68f] border border-[#f6d68f]/40">
+                📍 Delivering Across Bangalore
+              </span>
+              <a
+                href="https://wa.me/919113892539"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#d86343] px-3 py-0.5 text-[#fff8ee] hover:bg-[#c44d68] transition-colors font-bold shadow-xs"
+              >
+                <Phone size={10} /> WhatsApp: {BONHEUR_DISPLAY_PHONE}
+              </a>
+              <span className="inline-flex items-center gap-1 rounded-full bg-[#c44d68]/20 px-3 py-0.5 text-[#f7c2cf] border border-[#c44d68]/40">
+                🎂 Custom Celebration Cakes
+              </span>
+              <span className="text-[#f6d68f] opacity-60">•</span>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Navigation */}
