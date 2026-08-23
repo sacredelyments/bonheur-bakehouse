@@ -493,78 +493,10 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
       )}
 
-      <main className="pb-16 md:pb-0">{children}</main>
+      <main>{children}</main>
 
-      {/* Mobile Floating Bottom Bar with Distinct Color Badges */}
-      <div className="fixed bottom-3 inset-x-3 z-40 md:hidden">
-        <div className="mx-auto flex max-w-[420px] items-center justify-between gap-1 rounded-full border border-[#3d2339]/15 bg-[#fff9f0]/95 px-3 py-2 shadow-[0_12px_32px_rgba(61,35,57,0.22)] backdrop-blur-md">
-          {/* Home Badge */}
-          <Link
-            href="/"
-            className={`flex flex-col items-center justify-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-all ${
-              location === '/'
-                ? 'bg-[#3d2339] text-[#fff8ee]'
-                : 'text-[#3d2339] hover:bg-[#3d2339]/10'
-            }`}
-          >
-            <span>Home</span>
-          </Link>
-
-          {/* Bakes Badge - Terracotta */}
-          <Link
-            href="/bakes"
-            className={`flex flex-col items-center justify-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-all ${
-              location.startsWith('/bakes')
-                ? 'bg-[#d86343] text-white shadow-xs'
-                : 'bg-[#d86343]/15 text-[#d86343] hover:bg-[#d86343]/25'
-            }`}
-          >
-            <span>Bakes</span>
-          </Link>
-
-          {/* Menu Badge - Honey Gold */}
-          <Link
-            href="/menu"
-            className={`flex flex-col items-center justify-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-all ${
-              location.startsWith('/menu')
-                ? 'bg-[#b97a20] text-white shadow-xs'
-                : 'bg-[#f6d68f] text-[#3d2339] hover:bg-[#f6d68f]/80'
-            }`}
-          >
-            <span>Menu</span>
-          </Link>
-
-          {/* Order Bag Badge */}
-          <button
-            onClick={openDrawer}
-            className="relative flex items-center justify-center gap-1 rounded-full bg-[#3d2339] px-3.5 py-1.5 text-[10px] font-bold text-[#fff8ee] shadow-xs"
-            aria-label="Open Order Bag"
-          >
-            <ShoppingBag size={12} className="text-[#f6d68f]" />
-            <span>Bag</span>
-            {totalCount > 0 && (
-              <span className="grid h-4 min-w-4 place-items-center rounded-full bg-[#d86343] px-1 text-[9px] font-extrabold text-white">
-                {totalCount}
-              </span>
-            )}
-          </button>
-
-          {/* WhatsApp Badge - Vibrant Green */}
-          <a
-            href="https://wa.me/919113892539?text=Hi%20Bonheur%20Bakehouse!%20I'd%20like%20to%20order%20a%20cake."
-            target="_blank"
-            rel="noreferrer"
-            className="flex items-center justify-center gap-1 rounded-full bg-[#25D366] px-3.5 py-1.5 text-[10px] font-bold text-white shadow-xs hover:bg-[#20bd5a]"
-            aria-label="Order on WhatsApp"
-          >
-            <MessageCircle size={12} />
-            <span>Chat</span>
-          </a>
-        </div>
-      </div>
-
-      {/* Desktop Floating WhatsApp Button */}
-      <div className="fixed bottom-5 right-5 z-40 hidden md:flex flex-col items-end gap-2.5">
+      {/* Floating Quick WhatsApp & Bag Button (Sticky Bottom Right) */}
+      <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2.5">
         {totalCount > 0 && (
           <button
             onClick={openDrawer}
