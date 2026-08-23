@@ -228,17 +228,22 @@ export function Layout({ children }: { children: ReactNode }) {
     <div className="grain min-h-[100dvh] overflow-x-hidden bg-[#f8f2e8] text-[#3d2339]">
       <SmoothScroll />
 
-      {/* Announcement bar */}
-      <div className="bg-[#3d2339] px-5 py-2 text-center text-[10px] font-semibold uppercase tracking-[.18em] text-[#f6d68f] flex items-center justify-center gap-4 flex-wrap">
-        <span>Delivering handmade sweetness across Bangalore</span>
-        <span className="hidden sm:inline opacity-60">•</span>
+      {/* Announcement bar with distinct colored badges */}
+      <div className="bg-[#3d2339] px-3 py-2 text-center text-[10px] font-semibold flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
+        <span className="inline-flex items-center gap-1.5 rounded-full bg-[#b9c6a1]/25 px-2.5 py-0.5 text-[#e5f0d3] border border-[#b9c6a1]/40">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#b9c6a1] animate-pulse" />
+          Small Batch Fresh
+        </span>
+        <span className="inline-flex items-center gap-1 rounded-full bg-[#f6d68f]/20 px-2.5 py-0.5 text-[#f6d68f] border border-[#f6d68f]/40">
+          📍 Bangalore Delivery
+        </span>
         <a
           href="https://wa.me/919113892539"
           target="_blank"
           rel="noreferrer"
-          className="hover:underline inline-flex items-center gap-1.5 text-[#fff8ee]"
+          className="inline-flex items-center gap-1 rounded-full bg-[#d86343] px-2.5 py-0.5 text-[#fff8ee] hover:bg-[#c44d68] transition-colors font-bold shadow-xs"
         >
-          <Phone size={11} /> {BONHEUR_DISPLAY_PHONE}
+          <Phone size={10} /> {BONHEUR_DISPLAY_PHONE}
         </a>
       </div>
 
@@ -252,7 +257,7 @@ export function Layout({ children }: { children: ReactNode }) {
       >
         <div className="mx-auto flex max-w-[1340px] items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group" data-cursor="Atelier">
+          <Link href="/" className="flex items-center gap-2.5 group">
             <span className="grid h-9 w-9 place-items-center rounded-full border border-[#3d2339] text-[#3d2339] transition-colors group-hover:bg-[#3d2339] group-hover:text-[#fff8ee]">
               <CakeSlice size={17} strokeWidth={1.6} />
             </span>
@@ -262,7 +267,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-7 text-[11.5px] font-semibold md:flex" aria-label="Primary navigation">
+          <nav className="hidden items-center gap-8 md:flex">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -332,27 +337,105 @@ export function Layout({ children }: { children: ReactNode }) {
           </div>
         </div>
 
-        {/* Mobile drawer */}
+        {/* Mobile drawer with colorful badges */}
         <div
           className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
-            mobileOpen ? 'max-h-[550px] opacity-100' : 'max-h-0 opacity-0'
+            mobileOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <nav className="border-t border-[#cfbea8] bg-[#fff9f0] px-5 py-6">
-            <div className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className={`rounded-xl px-4 py-3 text-sm font-semibold transition-colors ${
-                    (link.href === '/' ? location === '/' : location.startsWith(link.href))
-                      ? 'bg-[#3d2339] text-[#fff8ee]'
-                      : 'hover:bg-[#f8f2e8]'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+            <div className="flex flex-col gap-2">
+              <Link
+                href="/"
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                  location === '/'
+                    ? 'bg-[#3d2339] text-[#fff8ee]'
+                    : 'bg-[#3d2339]/5 text-[#3d2339] hover:bg-[#3d2339]/10'
+                }`}
+              >
+                <span>Home</span>
+                <span className="rounded-full bg-[#f6d68f] px-2 py-0.5 text-[10px] font-bold text-[#3d2339]">Atelier</span>
+              </Link>
+
+              <Link
+                href="/bakes"
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                  location.startsWith('/bakes')
+                    ? 'bg-[#d86343] text-white'
+                    : 'bg-[#d86343]/10 text-[#d86343] hover:bg-[#d86343]/20'
+                }`}
+              >
+                <span>Bakes</span>
+                <span className="rounded-full bg-[#d86343] px-2 py-0.5 text-[10px] font-bold text-white">Daily Fresh</span>
+              </Link>
+
+              <Link
+                href="/menu"
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                  location.startsWith('/menu')
+                    ? 'bg-[#b97a20] text-white'
+                    : 'bg-[#f6d68f]/40 text-[#9e6315] hover:bg-[#f6d68f]/60'
+                }`}
+              >
+                <span>Menu & Prices</span>
+                <span className="rounded-full bg-[#b97a20] px-2 py-0.5 text-[10px] font-bold text-white">Full Menu</span>
+              </Link>
+
+              <Link
+                href="/celebrate"
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                  location.startsWith('/celebrate')
+                    ? 'bg-[#c44d68] text-white'
+                    : 'bg-[#c44d68]/10 text-[#c44d68] hover:bg-[#c44d68]/20'
+                }`}
+              >
+                <span>Celebration Cakes</span>
+                <span className="rounded-full bg-[#c44d68] px-2 py-0.5 text-[10px] font-bold text-white">Custom</span>
+              </Link>
+
+              <Link
+                href="/about"
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                  location.startsWith('/about')
+                    ? 'bg-[#567a42] text-white'
+                    : 'bg-[#b9c6a1]/30 text-[#426630] hover:bg-[#b9c6a1]/50'
+                }`}
+              >
+                <span>About Chef Sushmita</span>
+                <span className="rounded-full bg-[#567a42] px-2 py-0.5 text-[10px] font-bold text-white">Story</span>
+              </Link>
+
+              <Link
+                href="/visit"
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                  location.startsWith('/visit')
+                    ? 'bg-[#7a4270] text-white'
+                    : 'bg-[#7a4270]/10 text-[#7a4270] hover:bg-[#7a4270]/20'
+                }`}
+              >
+                <span>Visit Us</span>
+                <span className="rounded-full bg-[#7a4270] px-2 py-0.5 text-[10px] font-bold text-white">HSR Layout</span>
+              </Link>
+
+              <Link
+                href="/contact"
+                onClick={() => setMobileOpen(false)}
+                className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
+                  location.startsWith('/contact')
+                    ? 'bg-[#3d2339] text-[#fff8ee]'
+                    : 'bg-[#3d2339]/5 text-[#3d2339] hover:bg-[#3d2339]/10'
+                }`}
+              >
+                <span>Contact</span>
+                <span className="rounded-full bg-[#3d2339] px-2 py-0.5 text-[10px] font-bold text-[#fff8ee]">Direct</span>
+              </Link>
+
               <div className="mt-3 flex flex-col gap-2">
                 <button
                   onClick={() => { setMobileOpen(false); openDrawer(); }}
@@ -410,10 +493,78 @@ export function Layout({ children }: { children: ReactNode }) {
         </div>
       )}
 
-      <main>{children}</main>
+      <main className="pb-16 md:pb-0">{children}</main>
 
-      {/* Floating Quick WhatsApp Bag Button (Sticky Bottom Right) */}
-      <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-2.5">
+      {/* Mobile Floating Bottom Bar with Distinct Color Badges */}
+      <div className="fixed bottom-3 inset-x-3 z-40 md:hidden">
+        <div className="mx-auto flex max-w-[420px] items-center justify-between gap-1 rounded-full border border-[#3d2339]/15 bg-[#fff9f0]/95 px-3 py-2 shadow-[0_12px_32px_rgba(61,35,57,0.22)] backdrop-blur-md">
+          {/* Home Badge */}
+          <Link
+            href="/"
+            className={`flex flex-col items-center justify-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-all ${
+              location === '/'
+                ? 'bg-[#3d2339] text-[#fff8ee]'
+                : 'text-[#3d2339] hover:bg-[#3d2339]/10'
+            }`}
+          >
+            <span>Home</span>
+          </Link>
+
+          {/* Bakes Badge - Terracotta */}
+          <Link
+            href="/bakes"
+            className={`flex flex-col items-center justify-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-all ${
+              location.startsWith('/bakes')
+                ? 'bg-[#d86343] text-white shadow-xs'
+                : 'bg-[#d86343]/15 text-[#d86343] hover:bg-[#d86343]/25'
+            }`}
+          >
+            <span>Bakes</span>
+          </Link>
+
+          {/* Menu Badge - Honey Gold */}
+          <Link
+            href="/menu"
+            className={`flex flex-col items-center justify-center rounded-full px-3 py-1.5 text-[10px] font-bold transition-all ${
+              location.startsWith('/menu')
+                ? 'bg-[#b97a20] text-white shadow-xs'
+                : 'bg-[#f6d68f] text-[#3d2339] hover:bg-[#f6d68f]/80'
+            }`}
+          >
+            <span>Menu</span>
+          </Link>
+
+          {/* Order Bag Badge */}
+          <button
+            onClick={openDrawer}
+            className="relative flex items-center justify-center gap-1 rounded-full bg-[#3d2339] px-3.5 py-1.5 text-[10px] font-bold text-[#fff8ee] shadow-xs"
+            aria-label="Open Order Bag"
+          >
+            <ShoppingBag size={12} className="text-[#f6d68f]" />
+            <span>Bag</span>
+            {totalCount > 0 && (
+              <span className="grid h-4 min-w-4 place-items-center rounded-full bg-[#d86343] px-1 text-[9px] font-extrabold text-white">
+                {totalCount}
+              </span>
+            )}
+          </button>
+
+          {/* WhatsApp Badge - Vibrant Green */}
+          <a
+            href="https://wa.me/919113892539?text=Hi%20Bonheur%20Bakehouse!%20I'd%20like%20to%20order%20a%20cake."
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center justify-center gap-1 rounded-full bg-[#25D366] px-3.5 py-1.5 text-[10px] font-bold text-white shadow-xs hover:bg-[#20bd5a]"
+            aria-label="Order on WhatsApp"
+          >
+            <MessageCircle size={12} />
+            <span>Chat</span>
+          </a>
+        </div>
+      </div>
+
+      {/* Desktop Floating WhatsApp Button */}
+      <div className="fixed bottom-5 right-5 z-40 hidden md:flex flex-col items-end gap-2.5">
         {totalCount > 0 && (
           <button
             onClick={openDrawer}
