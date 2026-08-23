@@ -61,12 +61,12 @@ function Info() {
             </p>
             <div className="mt-5 flex flex-wrap gap-3">
               <a
-                href="https://wa.me/919870449479?text=Hi%20Bonheur%20Bakehouse!%20What%20bakes%20are%20available%20today%3F"
+                href="https://wa.me/919113892539?text=Hi%20Bonheur%20Bakehouse!%20What%20bakes%20are%20available%20today%3F"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2 text-xs font-bold text-[#ffffff]"
               >
-                WhatsApp: +91 98704 49479 <ArrowRight size={13} />
+                WhatsApp: +91 91138 92539 <ArrowRight size={13} />
               </a>
             </div>
           </div>

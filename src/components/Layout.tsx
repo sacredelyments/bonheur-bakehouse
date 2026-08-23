@@ -112,7 +112,7 @@ function EnquiryModal({
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <a
-                href={`https://wa.me/919870449479?text=${whatsappMessage}`}
+                href={`https://wa.me/919113892539?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noreferrer"
                 className="solid-button inline-flex items-center gap-2 rounded-full bg-[#25D366] text-[#ffffff] px-6 py-3.5 text-xs font-bold shadow-md hover:bg-[#20bd5a]"
@@ -188,7 +188,7 @@ function EnquiryModal({
                   Send enquiry <ArrowRight size={15} />
                 </button>
                 <a
-                  href={`https://wa.me/919870449479?text=${encodeURIComponent("Hi Bonheur Bakehouse! I'd like to enquire about ordering a celebration cake.")}`}
+                  href={`https://wa.me/919113892539?text=${encodeURIComponent("Hi Bonheur Bakehouse! I'd like to enquire about ordering a celebration cake.")}`}
                   target="_blank"
                   rel="noreferrer"
                   className="outline-button inline-flex items-center gap-2 rounded-full border border-[#3d2339] px-6 py-4 text-xs font-bold text-[#3d2339]"
@@ -233,7 +233,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <span>Delivering handmade sweetness across Bangalore</span>
         <span className="hidden sm:inline opacity-60">•</span>
         <a
-          href="https://wa.me/919870449479"
+          href="https://wa.me/919113892539"
           target="_blank"
           rel="noreferrer"
           className="hover:underline inline-flex items-center gap-1.5 text-[#fff8ee]"
@@ -298,7 +298,7 @@ export function Layout({ children }: { children: ReactNode }) {
             </button>
 
             <a
-              href="https://wa.me/919870449479"
+              href="https://wa.me/919113892539"
               target="_blank"
               rel="noreferrer"
               className="hidden h-9 items-center gap-1.5 rounded-full border border-[#3d2339] px-3.5 text-[11px] font-bold transition-colors hover:bg-[#3d2339] hover:text-[#fff8ee] lg:flex"
@@ -361,7 +361,7 @@ export function Layout({ children }: { children: ReactNode }) {
                   <ShoppingBag size={15} /> View Order Bag ({totalCount} {totalCount === 1 ? 'item' : 'items'})
                 </button>
                 <a
-                  href="https://wa.me/919870449479"
+                  href="https://wa.me/919113892539"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-xs font-bold text-[#ffffff]"
@@ -426,7 +426,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </button>
         )}
         <a
-          href="https://wa.me/919870449479?text=Hi%20Bonheur%20Bakehouse!%20I'd%20like%20to%20order%20a%20cake."
+          href="https://wa.me/919113892539?text=Hi%20Bonheur%20Bakehouse!%20I'd%20like%20to%20order%20a%20cake."
           target="_blank"
           rel="noreferrer"
           className="flex h-12 w-12 items-center justify-center rounded-full bg-[#25D366] text-white shadow-xl transition-all hover:scale-110 hover:bg-[#20bd5a]"
@@ -459,7 +459,7 @@ export function Layout({ children }: { children: ReactNode }) {
               </p>
               <div className="mt-6 flex flex-col gap-2.5">
                 <a
-                  href="https://wa.me/919870449479"
+                  href="https://wa.me/919113892539"
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 text-xs font-bold text-[#25D366] transition-opacity hover:opacity-80"
@@ -467,7 +467,7 @@ export function Layout({ children }: { children: ReactNode }) {
                   <MessageCircle size={14} /> WhatsApp: {BONHEUR_DISPLAY_PHONE}
                 </a>
                 <a
-                  href="tel:+919870449479"
+                  href="tel:+919113892539"
                   className="inline-flex items-center gap-2 text-xs font-bold text-[#f6d68f] transition-opacity hover:opacity-80"
                 >
                   <Phone size={14} /> Call: {BONHEUR_DISPLAY_PHONE}
@@ -504,7 +504,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 <div className="flex flex-col gap-3 text-xs font-semibold">
                   <Link href="/visit" className="transition-opacity hover:opacity-60">Find Us</Link>
                   <Link href="/contact" className="transition-opacity hover:opacity-60">Say Hello</Link>
-                  <a href="https://wa.me/919870449479" target="_blank" rel="noreferrer" className="text-[#25D366] transition-opacity hover:opacity-80">WhatsApp Us</a>
+                  <a href="https://wa.me/919113892539" target="_blank" rel="noreferrer" className="text-[#25D366] transition-opacity hover:opacity-80">WhatsApp Us</a>
                   <a href="https://www.instagram.com/bonheurbakehouse/" target="_blank" rel="noreferrer" className="transition-opacity hover:opacity-60">Instagram</a>
                 </div>
               </div>

@@ -1,5 +1,5 @@
-export const BONHEUR_PHONE = '919870449479';
-export const BONHEUR_DISPLAY_PHONE = '+91 98704 49479';
+export const BONHEUR_PHONE = '919113892539';
+export const BONHEUR_DISPLAY_PHONE = '+91 91138 92539';
 
 export interface OrderItem {
   id: string;

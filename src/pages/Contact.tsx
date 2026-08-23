@@ -84,7 +84,7 @@ function ContactForm() {
             <p className="text-sm text-[#6e5763] mb-4">Chat with us directly to discuss custom sizes, flavours, or delivery.</p>
             <div className="flex flex-col gap-2">
               <a
-                href="https://wa.me/919870449479?text=Hi%20Bonheur%20Bakehouse!%20I'd%20like%20to%20order%20a%20cake."
+                href="https://wa.me/919113892539?text=Hi%20Bonheur%20Bakehouse!%20I'd%20like%20to%20order%20a%20cake."
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-5 py-3 text-xs font-bold text-[#ffffff] transition-transform hover:-translate-y-0.5"
@@ -92,7 +92,7 @@ function ContactForm() {
                 WhatsApp: {BONHEUR_DISPLAY_PHONE} <ArrowRight size={13} />
               </a>
               <a
-                href="tel:+919870449479"
+                href="tel:+919113892539"
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-[#3d2339] px-5 py-2.5 text-xs font-bold text-[#3d2339] transition-transform hover:-translate-y-0.5"
               >
                 Call: {BONHEUR_DISPLAY_PHONE}
@@ -136,7 +136,7 @@ function ContactForm() {
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
                 <a
-                  href={`https://wa.me/919870449479?text=${whatsappMessage}`}
+                  href={`https://wa.me/919113892539?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noreferrer"
                   className="solid-button inline-flex items-center gap-2 rounded-full bg-[#25D366] px-6 py-3.5 text-xs font-bold text-[#ffffff]"
