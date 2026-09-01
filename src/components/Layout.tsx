@@ -19,7 +19,7 @@ import { logOrderToWebhook, createWhatsAppLink, BONHEUR_DISPLAY_PHONE } from '@/
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
+  { href: '/about', label: 'Founders Page' },
   { href: '/menu', label: 'Menu' },
   { href: '/bakes', label: 'Bakes' },
   { href: '/celebrate', label: 'Celebrate' },
@@ -411,12 +411,12 @@ export function Layout({ children }: { children: ReactNode }) {
                 href="/about"
                 onClick={() => setMobileOpen(false)}
                 className={`flex items-center justify-between rounded-xl px-4 py-2.5 text-sm font-semibold transition-all ${
-                  location.startsWith('/about')
+                  location.startsWith('/about') || location.startsWith('/founders')
                     ? 'bg-[#567a42] text-white'
                     : 'bg-[#b9c6a1]/30 text-[#426630] hover:bg-[#b9c6a1]/50'
                 }`}
               >
-                <span>About Chef Sushmita</span>
+                <span>Founders Page</span>
                 <span className="rounded-full bg-[#567a42] px-2 py-0.5 text-[10px] font-bold text-white">Story</span>
               </Link>
 
@@ -496,7 +496,9 @@ export function Layout({ children }: { children: ReactNode }) {
               <Link href="/" className="hover:text-[#d86343] transition-colors">Home</Link>
               <span>/</span>
               <span className="text-[#3d2339] font-bold capitalize">
-                {location.replace('/', '').replace(/-/g, ' ') || 'Page'}
+                {location === '/about' || location === '/founders'
+                  ? 'Founders Page'
+                  : location.replace('/', '').replace(/-/g, ' ') || 'Page'}
               </span>
             </nav>
           </div>
@@ -580,7 +582,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 <p className="mb-4 text-[10px] font-bold uppercase tracking-[.15em] text-[#684955]">Explore</p>
                 <div className="flex flex-col gap-3 text-xs font-semibold">
                   <Link href="/" className="transition-opacity hover:opacity-60">Home</Link>
-                  <Link href="/about" className="transition-opacity hover:opacity-60">About Sushmita</Link>
+                  <Link href="/about" className="transition-opacity hover:opacity-60">Founders Page</Link>
                   <Link href="/bakes" className="transition-opacity hover:opacity-60">The Bakes</Link>
                 </div>
               </div>
