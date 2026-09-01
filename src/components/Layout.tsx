@@ -229,29 +229,29 @@ export function Layout({ children }: { children: ReactNode }) {
       <SmoothScroll />
 
       {/* Continuous Moving Announcement Marquee Bar */}
-      <div className="overflow-hidden bg-[#3d2339] py-2 border-b border-[#3d2339]/50 select-none">
-        <div className="flex min-w-max animate-[marquee-ltr_26s_linear_infinite] items-center gap-6">
+      <div className="overflow-hidden bg-[#3d2339] py-2.5 border-b border-[#3d2339]/50 select-none">
+        <div className="flex min-w-max animate-[marquee-ltr_28s_linear_infinite] items-center gap-10">
           {[1, 2, 3, 4].map((idx) => (
-            <div key={idx} className="flex shrink-0 items-center gap-5 text-[10.5px] font-semibold">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#b9c6a1]/25 px-3 py-0.5 text-[#e5f0d3] border border-[#b9c6a1]/40">
+            <div key={idx} className="flex shrink-0 items-center gap-8 text-[11px] font-semibold text-[#fff8ee]">
+              <span className="inline-flex items-center gap-2 rounded-full bg-[#b9c6a1]/20 px-3.5 py-1 text-[#e5f0d3] border border-[#b9c6a1]/40 shadow-2xs">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#b9c6a1] animate-pulse" />
                 Small Batch Fresh
               </span>
-              <span className="inline-flex items-center gap-1 rounded-full bg-[#f6d68f]/20 px-3 py-0.5 text-[#f6d68f] border border-[#f6d68f]/40">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f6d68f]/15 px-3.5 py-1 text-[#f6d68f] border border-[#f6d68f]/40 shadow-2xs">
                 📍 Delivering Across Bangalore
               </span>
               <a
                 href="https://wa.me/919113892539"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-[#d86343] px-3 py-0.5 text-[#fff8ee] hover:bg-[#c44d68] transition-colors font-bold shadow-xs"
+                className="inline-flex items-center gap-1.5 rounded-full bg-[#25D366] px-3.5 py-1 text-white hover:bg-[#20bd5a] transition-all font-bold shadow-xs"
               >
-                <Phone size={10} /> WhatsApp: {BONHEUR_DISPLAY_PHONE}
+                <Phone size={11} /> WhatsApp: {BONHEUR_DISPLAY_PHONE}
               </a>
-              <span className="inline-flex items-center gap-1 rounded-full bg-[#c44d68]/20 px-3 py-0.5 text-[#f7c2cf] border border-[#c44d68]/40">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#c44d68]/20 px-3.5 py-1 text-[#f7c2cf] border border-[#c44d68]/40 shadow-2xs">
                 🎂 Custom Celebration Cakes
               </span>
-              <span className="text-[#f6d68f] opacity-60">•</span>
+              <span className="text-[#f6d68f]/60 font-light text-xs">✦</span>
             </div>
           ))}
         </div>
@@ -261,14 +261,14 @@ export function Layout({ children }: { children: ReactNode }) {
       <header
         className={`sticky top-0 z-50 w-full transition-all duration-300 ${
           scrolled
-            ? 'bg-[#f8f2e8]/85 shadow-[0_1px_0_rgba(61,35,57,.08)] backdrop-blur-lg'
-            : 'bg-transparent'
+            ? 'bg-[#f8f2e8]/90 shadow-[0_2px_12px_rgba(61,35,57,0.06)] backdrop-blur-lg border-b border-[#cfbea8]/40'
+            : 'bg-[#f8f2e8]/60 backdrop-blur-xs'
         }`}
       >
-        <div className="mx-auto flex max-w-[1340px] items-center justify-between px-5 py-4 sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-[1340px] items-center justify-between px-5 py-3.5 sm:px-8 lg:px-12">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <span className="grid h-9 w-9 place-items-center rounded-full border border-[#3d2339] text-[#3d2339] transition-colors group-hover:bg-[#3d2339] group-hover:text-[#fff8ee]">
+          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+            <span className="grid h-9 w-9 place-items-center rounded-full border border-[#3d2339] text-[#3d2339] transition-all duration-300 group-hover:bg-[#3d2339] group-hover:text-[#fff8ee] group-hover:rotate-6">
               <CakeSlice size={17} strokeWidth={1.6} />
             </span>
             <span className="display text-[1.2rem] font-semibold leading-none tracking-[-.03em]">
@@ -277,7 +277,7 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-4 text-xs font-semibold lg:gap-6 xl:gap-7 md:flex shrink-0">
+          <nav className="hidden items-center gap-5 xl:gap-8 text-xs font-semibold lg:flex shrink-0">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -294,11 +294,11 @@ export function Layout({ children }: { children: ReactNode }) {
           </nav>
 
           {/* Right side */}
-          <div className="flex items-center gap-2 sm:gap-2.5">
+          <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
             {/* Bag Button */}
             <button
               onClick={openDrawer}
-              className="relative flex h-9 items-center gap-2 rounded-full border border-[#3d2339] bg-[#fff9f0] px-3 text-[11px] font-bold text-[#3d2339] transition-colors hover:bg-[#3d2339] hover:text-[#fff8ee]"
+              className="relative flex h-9 items-center gap-2 rounded-full border border-[#3d2339]/35 bg-[#fff9f0] px-3 text-[11px] font-bold text-[#3d2339] shadow-2xs transition-all hover:bg-[#3d2339] hover:text-[#fff8ee] hover:border-[#3d2339]"
               aria-label="View Order Bag"
             >
               <ShoppingBag size={14} className="text-[#d86343]" />
@@ -312,33 +312,40 @@ export function Layout({ children }: { children: ReactNode }) {
               )}
             </button>
 
+            {/* WhatsApp link on xl+ */}
             <a
               href="https://wa.me/919113892539"
               target="_blank"
               rel="noreferrer"
-              className="hidden h-9 items-center gap-1.5 rounded-full border border-[#3d2339] px-3.5 text-[11px] font-bold transition-colors hover:bg-[#3d2339] hover:text-[#fff8ee] lg:flex"
+              className="hidden h-9 items-center gap-1.5 rounded-full border border-[#25D366]/40 bg-[#25D366]/10 px-3.5 text-[11px] font-bold text-[#1b7e3e] transition-all hover:bg-[#25D366] hover:text-white xl:flex"
               title="Order on WhatsApp"
             >
               <MessageCircle size={13} strokeWidth={1.8} className="text-[#25D366]" />
-              {BONHEUR_DISPLAY_PHONE}
+              <span>{BONHEUR_DISPLAY_PHONE}</span>
             </a>
+
+            {/* Instagram link on 2xl+ */}
             <a
               href="https://www.instagram.com/bonheurbakehouse/"
               target="_blank"
               rel="noreferrer"
-              className="hidden h-9 items-center gap-2 rounded-full border border-[#3d2339] px-3.5 text-[11px] font-bold transition-colors hover:bg-[#3d2339] hover:text-[#fff8ee] xl:flex"
+              className="hidden h-9 items-center gap-2 rounded-full border border-[#3d2339]/30 px-3.5 text-[11px] font-bold transition-all hover:bg-[#3d2339] hover:text-[#fff8ee] 2xl:flex"
             >
               <Instagram size={13} strokeWidth={1.8} />
               @bonheurbakehouse
             </a>
+
+            {/* Enquire CTA */}
             <button
-              className="solid-button hidden rounded-full bg-[#d86343] px-5 py-3 text-[11px] font-bold text-[#fff8ee] md:block hover:bg-[#c44d68] transition-colors"
+              className="solid-button hidden rounded-full bg-[#d86343] px-5 py-2.5 text-[11px] font-bold text-[#fff8ee] sm:inline-flex hover:bg-[#c44d68] transition-all shadow-xs"
               onClick={() => setEnquiryOpen(true)}
             >
               Enquire for a cake
             </button>
+
+            {/* Mobile / Tablet Drawer Toggle */}
             <button
-              className="grid h-10 w-10 place-items-center rounded-full bg-[#3d2339] text-[#fff8ee] md:hidden"
+              className="grid h-9 w-9 place-items-center rounded-full bg-[#3d2339] text-[#fff8ee] lg:hidden hover:bg-[#d86343] transition-colors"
               onClick={() => setMobileOpen((o) => !o)}
               aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             >
@@ -349,7 +356,7 @@ export function Layout({ children }: { children: ReactNode }) {
 
         {/* Mobile drawer with colorful badges */}
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out md:hidden ${
+          className={`overflow-hidden transition-all duration-300 ease-in-out lg:hidden ${
             mobileOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
