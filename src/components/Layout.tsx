@@ -16,6 +16,7 @@ import { useOrder } from '@/context/OrderContext';
 import { OrderDrawer } from '@/components/OrderDrawer';
 import { SmoothScroll } from '@/components/SmoothScroll';
 import { logOrderToWebhook, createWhatsAppLink, BONHEUR_DISPLAY_PHONE } from '@/lib/whatsapp';
+import { currentDailySpecial } from '@/data/daily-special';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -236,6 +237,9 @@ export function Layout({ children }: { children: ReactNode }) {
               <span className="inline-flex items-center gap-2 rounded-full bg-[#b9c6a1]/20 px-3.5 py-1 text-[#e5f0d3] border border-[#b9c6a1]/40 shadow-2xs">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#b9c6a1] animate-pulse" />
                 Small Batch Fresh
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[#d86343]/25 px-3.5 py-1 text-[#ffd7ce] border border-[#d86343]/40 shadow-2xs">
+                ✨ Special: {currentDailySpecial.name} (₹{currentDailySpecial.price})
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-[#f6d68f]/15 px-3.5 py-1 text-[#f6d68f] border border-[#f6d68f]/40 shadow-2xs">
                 📍 Delivering Across Bangalore

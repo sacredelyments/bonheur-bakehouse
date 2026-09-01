@@ -4,6 +4,7 @@ import { ArrowRight, Search, Plus } from 'lucide-react';
 import { cakeSections, menuItems, type MenuItem } from '@/data/menu-data';
 import { useInView } from '@/hooks/use-in-view';
 import { useOrder } from '@/context/OrderContext';
+import { DishOfTheDay } from '@/components/DishOfTheDay';
 
 const categories = ['All', 'Patties & puff', 'Cookies', 'Cupcakes', 'Display', 'Desserts'] as const;
 
@@ -256,6 +257,7 @@ export default function Menu() {
   return (
     <div className="page-enter">
       <MenuHeader search={search} setSearch={setSearch} />
+      <DishOfTheDay className="py-16 sm:py-20 bg-[#fff9f0]/60 border-b border-[#cfbea8]/40" />
       <CounterItems search={search} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
       <CakePricing />
     </div>

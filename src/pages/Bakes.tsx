@@ -5,6 +5,7 @@ import { useInView } from '@/hooks/use-in-view';
 import { bakes, toneColors, type Bake } from '@/data/menu-data';
 import { useOrder } from '@/context/OrderContext';
 import { BONHEUR_DISPLAY_PHONE } from '@/lib/whatsapp';
+import { DishOfTheDay } from '@/components/DishOfTheDay';
 
 const filters = ['All', 'Gateaux', 'All day', 'Little treats'] as const;
 
@@ -18,7 +19,7 @@ function parseBakePrice(priceStr: string): number {
 
 function BakesHeader() {
   return (
-    <div className="px-5 py-24 sm:px-8 lg:py-28">
+    <div className="px-5 py-16 sm:px-8 lg:py-24">
       <div className="mx-auto max-w-[1340px]">
         <div className="mx-auto max-w-[700px] text-center">
           <p className="eyebrow mb-5 text-[#d86343]">From the kitchen</p>
@@ -57,6 +58,8 @@ export default function Bakes() {
   return (
     <div className="page-enter">
       <BakesHeader />
+
+      <DishOfTheDay className="pb-20 sm:pb-24" showTitleHeader={false} />
 
       <section className="mx-auto max-w-[1340px] px-5 pb-32 sm:px-8 lg:px-12">
         {/* Filter tabs */}

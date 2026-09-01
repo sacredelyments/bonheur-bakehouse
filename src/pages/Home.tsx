@@ -8,6 +8,7 @@ import weddingCake from '@/assets/wedding-cake.jpg';
 import { useInView } from '@/hooks/use-in-view';
 import { bakes, toneColors } from '@/data/menu-data';
 import { HeroParticles } from '@/components/HeroParticles';
+import { DishOfTheDay } from '@/components/DishOfTheDay';
 
 const featured = bakes.slice(0, 3);
 
@@ -312,6 +313,7 @@ export default function Home() {
     <div className="page-enter">
       <HeroSection />
       <Marquee />
+      <DishOfTheDay className="py-16 sm:py-24 bg-[#fff9f0]/70 border-b border-[#cfbea8]/40" />
       <FeaturedBakes />
       <QuoteSection />
       <CelebrateCta />
