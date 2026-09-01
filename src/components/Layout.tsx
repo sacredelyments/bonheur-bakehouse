@@ -19,7 +19,7 @@ import { logOrderToWebhook, createWhatsAppLink, BONHEUR_DISPLAY_PHONE } from '@/
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'Founders Page' },
+  { href: '/about', label: 'Founder Chef Sushmita' },
   { href: '/menu', label: 'Menu' },
   { href: '/bakes', label: 'Bakes' },
   { href: '/celebrate', label: 'Celebrate' },
@@ -416,7 +416,7 @@ export function Layout({ children }: { children: ReactNode }) {
                     : 'bg-[#b9c6a1]/30 text-[#426630] hover:bg-[#b9c6a1]/50'
                 }`}
               >
-                <span>Founders Page</span>
+                <span>Founder Chef Sushmita</span>
                 <span className="rounded-full bg-[#567a42] px-2 py-0.5 text-[10px] font-bold text-white">Story</span>
               </Link>
 
@@ -497,7 +497,7 @@ export function Layout({ children }: { children: ReactNode }) {
               <span>/</span>
               <span className="text-[#3d2339] font-bold capitalize">
                 {location === '/about' || location === '/founders'
-                  ? 'Founders Page'
+                  ? 'Founder Chef Sushmita'
                   : location.replace('/', '').replace(/-/g, ' ') || 'Page'}
               </span>
             </nav>
@@ -582,7 +582,7 @@ export function Layout({ children }: { children: ReactNode }) {
                 <p className="mb-4 text-[10px] font-bold uppercase tracking-[.15em] text-[#684955]">Explore</p>
                 <div className="flex flex-col gap-3 text-xs font-semibold">
                   <Link href="/" className="transition-opacity hover:opacity-60">Home</Link>
-                  <Link href="/about" className="transition-opacity hover:opacity-60">Founders Page</Link>
+                  <Link href="/about" className="transition-opacity hover:opacity-60">Founder Chef Sushmita</Link>
                   <Link href="/bakes" className="transition-opacity hover:opacity-60">The Bakes</Link>
                 </div>
               </div>
