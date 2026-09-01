@@ -277,12 +277,12 @@ export function Layout({ children }: { children: ReactNode }) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center gap-8 md:flex">
+          <nav className="hidden items-center gap-4 text-xs font-semibold lg:gap-6 xl:gap-7 md:flex shrink-0">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`nav-link ${
+                className={`nav-link whitespace-nowrap ${
                   (link.href === '/' ? location === '/' : location.startsWith(link.href))
                     ? 'nav-link-active'
                     : ''

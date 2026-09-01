@@ -193,6 +193,10 @@
   transition: color .2s;
   color: #6e5763;
   padding: 4px 0;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1.25;
 }
 .nav-link:hover {
   color: #3d2339;
